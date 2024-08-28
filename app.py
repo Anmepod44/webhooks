@@ -5,3 +5,5 @@ app=FastAPI()
 @app.get("/")
 def greet():
     return "Marvin made some changes at 16:43pm"
+def by_marvin():
+    return "hello my name is marvin"
