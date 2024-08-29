@@ -9,7 +9,5 @@ def greet():
 def feature_by_marvin():
     return "This feature was made by marvin"
 
-    return "Hello From Marvin"
-
 def feature_by_dev():
     return "dev made some changes here"
