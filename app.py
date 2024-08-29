@@ -25,6 +25,11 @@ def feature_by_marvin():
     return "This feature was made by marvin"
 
 def feature_by_dev():
+    return "dev made some changes here"
+
+def conflict_by_marvin():
+    return "marvin raised a conflict"
+
     return "dev raised a conflict with the main, that requires resolution."
 
 def conflict_by_dev():
