@@ -1,7 +1,5 @@
 import requests
-import json
 from openai import OpenAI
-
 
 client = OpenAI(
     api_key="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"
