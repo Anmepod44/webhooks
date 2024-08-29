@@ -1,10 +1,16 @@
 from fastapi import FastAPI
+from datetime import datetime
 
 app=FastAPI()
 
 @app.get("/")
 def greet():
     return "Marvin made some changes at 16:43pm"
+
+@app.post("/hook")
+def hook(data:dict):
+    print(f" Received a payload from github hook of action {data['action']} at {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}")
+    return "Received"
 
 def feature_by_marvin():
     return "This feature was made by marvin"
