@@ -2,7 +2,6 @@ import requests
 from openai import OpenAI
 import os
 
-
 client = OpenAI(
     api_key=os.getenv("OPENAI_KEY")
 )
@@ -16,8 +15,7 @@ headers = {
 response = requests.get('https://api.github.com/repos/Anmepod44/webhooks/pulls', headers=headers)
 data = response.json()
 
-
-print(f"{data} is the number of pull requests in the branch")
+data=dict(data[0])
 
 def download_content(url):
     try:
