@@ -20,12 +20,3 @@ def hello(request:Request):
 def hook(data:dict):
     print(f" Received a payload from github hook of action {data['action']} at {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}")
     return "Received"
-
-def feature_by_marvin():
-    return "This feature was made by marvin"
-
-def feature_by_dev():
-    return "dev raised a conflict with the main, that requires resolution."
-
-def conflict_by_dev():
-    return "This is a conflict by dev"
