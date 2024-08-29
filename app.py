@@ -29,3 +29,6 @@ def feature_by_dev():
 
 def conflict_by_marvin():
     return "marvin raised a conflict"
+
+def conflict_by_marvin_two():
+    return "marvin raised a conflict"
