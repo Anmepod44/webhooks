@@ -32,3 +32,8 @@ def conflict_by_marvin():
 
 def conflict_by_marvin_two():
     return "marvin raised a conflict"
+
+    return "dev raised a conflict with the main, that requires resolution."
+
+def conflict_by_dev():
+    return "This is a conflict by dev"
