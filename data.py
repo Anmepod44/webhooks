@@ -1,13 +1,15 @@
 import requests
 import json
 from openai import OpenAI
+import os
+
 
 client = OpenAI(
-    api_key=""
+    api_key=os.getenv("OPENAI_KEY")
 )
 
 headers = {
-    'Authorization': '',
+    'Authorization': os.getenv("GITHUB_ACCESS_TOKEN"),
     'X-GitHub-Api-Version': '2022-11-28'
 }
 
@@ -15,12 +17,8 @@ headers = {
 response = requests.get('https://api.github.com/repos/Anmepod44/webhooks/pulls', headers=headers)
 data = response.json()
 
-# with open('output.json','w') as file:
-#     json.dump(data,file)
-#     print("Successfully save the file")
-    
 
-data=dict(data[0])
+print(f"{data} is the number of pull requests in the branch")
 
 def download_content(url):
     try:
