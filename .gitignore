@@ -3,3 +3,5 @@ pycache
 output_file.json
 output.json
 process.py
+data.py
+autogit.py

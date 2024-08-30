@@ -1,18 +1,24 @@
 import requests
+import json
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="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"
+    api_key=""
 )
 
 headers = {
-    'Authorization': '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',
+    'Authorization': '',
     'X-GitHub-Api-Version': '2022-11-28'
 }
 
 # Fetch the pull requests
 response = requests.get('https://api.github.com/repos/Anmepod44/webhooks/pulls', headers=headers)
 data = response.json()
+
+# with open('output.json','w') as file:
+#     json.dump(data,file)
+#     print("Successfully save the file")
+    
 
 data=dict(data[0])
 
@@ -78,9 +84,33 @@ def review_code_conflicts(patch_content):
     return chat_completion.choices[0].message.content
 
 
-if __name__=="__main__":
-    patch_content = get_diff_patch(data).get("patch")
+#This is a function to add a comment on the diff of a pull request.
+def post_comment(comment):
     
-    # Review the code conflicts and print the result
-    review_result = review_code_conflicts(patch_content)
-    print(review_result)
+    request_data = {
+        "body": comment,
+        "commit_id": data.get('head').get('sha'),
+        "path": "data.py",
+        "start_line": 1,
+        "start_side": "RIGHT",
+        "line": 2,
+        "side": "RIGHT"
+    }
+    print(request_data)
+    API_URL="https://api.github.com/repos/Anmepod44/webhooks/pulls/11/comments"
+    response = requests.post(API_URL, headers=headers, json=request_data)
+    
+    if response.status_code == 201:
+        print("Comment posted successfully.")
+    else:
+        print(f"Failed to post comment: {response.status_code}")
+        print(response.json())
+
+
+if __name__=="__main__":
+    # patch_content = get_diff_patch(data).get("patch")
+    
+    # # Review the code conflicts and print the result
+    # review_result = review_code_conflicts(patch_content)
+    # print(review_result)
+    post_comment("Welcome Home")
