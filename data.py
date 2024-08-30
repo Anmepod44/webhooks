@@ -1,12 +1,13 @@
 import requests
 from openai import OpenAI
+import os
 
 client = OpenAI(
-    api_key="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"
+    api_key=os.getenv("OPENAI_KEY")
 )
 
 headers = {
-    'Authorization': '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',
+    'Authorization': os.getenv("GITHUB_ACCESS_TOKEN"),
     'X-GitHub-Api-Version': '2022-11-28'
 }
 
